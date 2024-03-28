@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  apache:
+    container_name: apache
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../scripts:/scripts
+    ports:
+      - "9091:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    networks:
+      - lab
+
+networks:
+  lab:
